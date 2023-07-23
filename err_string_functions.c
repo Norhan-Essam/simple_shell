@@ -18,7 +18,6 @@ void _eputs(char *str)
 		e++;
 	}
 }
-
 /**
  * _eputchar - writes the character u to stderr
  * @u: The character to print
