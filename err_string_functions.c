@@ -1,8 +1,7 @@
 #include "shell.h"
-
 /**
  * _eputs - prints an input string
- * @str: the string to be printed
+ * @str: the string printed
  *
  * Return: Nothing
 */
@@ -18,7 +17,6 @@ void _eputs(char *str)
 		e++;
 	}
 }
-
 /**
  * _eputchar - writes the character u to stderr
  * @u: The character to print
