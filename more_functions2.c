@@ -39,7 +39,7 @@ void print_error(info_k *info, char *estr)
 {
 	_eputs(info->fname);
 	_eputs(": ");
-	print_b(info->line count, STDERR_FILENO);
+	print_d(info->line count, STDERR_FILENO);
 	_eputs(": ");
 	_eputs(info->argv[0]);
 	_eputs(": ");
@@ -47,13 +47,13 @@ void print_error(info_k *info, char *estr)
 }
 
 /**
- * print_b - function prints a decimal (integer) number (base 10)
+ * print_d - function prints a decimal (integer) number (base 10)
  * @input: the input
  * @fd: the filedescriptor to write to
  *
  * Return: number of characters printed
 */
-int print_b(int input, int fd)
+int print_d(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
 	int e, count = 0;
