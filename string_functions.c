@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _strlen - returns th length of a string
+ * _strlen - returns the length of a string
  * @z: the string whose length to check
  *
  * Return: integer length of string
@@ -23,9 +23,9 @@ int _strlen(char *z)
  * @z1: the first strang
  * @z2: the second strang
  *
- * Return: negative if z1 < z2, positive if z1 > z2, zero if z1 -- z2
+ * Return: negative if z1 < z2, positive if z1 > z2, zero if z1 ==  z2
 */
-int _strcmp(char *z1, char z2)
+int _strcmp(char *z1, char *z2)
 {
 	while (*z1 && *z2)
 	{
