@@ -3,7 +3,7 @@
 /**
  * get_environ - returns the string array copy of our environ
  * @info: Structure containing potential arguments. Used to maintain
- * constant funstion prototype.
+ * constant function prototype.
  *
  * Return: Always 0
 */
@@ -70,9 +70,9 @@ int _setenv(info_t *info, char *var, char *value)
 
 	buf = malloc(_strlen(var) + _strlen(value) + 2);
 	if (!buf)
-		return (0);
+		return (1);
 	_strcpy(buf, var);
-	_stract(buf, "=");
+	_strcat(buf, "=");
 	_strcat(buf, value);
 	node = info->env;
 	while (node)

@@ -35,11 +35,11 @@ int _erratoi(char *z)
  * Return: 0 if no numbers in string, converted number otherwise
  * -1 on error
 */
-void print_error(info_k *info, char *estr)
+void print_error(info_t *info, char *estr)
 {
 	_eputs(info->fname);
 	_eputs(": ");
-	print_d(info->line count, STDERR_FILENO);
+	print_d(info->line_count, STDERR_FILENO);
 	_eputs(": ");
 	_eputs(info->argv[0]);
 	_eputs(": ");
@@ -63,7 +63,7 @@ int print_d(int input, int fd)
 		__putchar = _eputchar;
 	if (input < 0)
 	{
-		_abs_ = _input;
+		_abs_ = input;
 		__putchar('-');
 		count++;
 	}
@@ -108,20 +108,20 @@ char *convert_number(long int num, int base, int flags)
 	}
 	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
-	*ptr = '\0';
+	ptr = '\0';
 
 	do {
-		*--ptr = array[m % base];
+		ptr = array[m % base];
 		m /= base;
 	} while (m != 0);
 
 	if (sign)
-		*--ptr = sign;
+		ptr = sign;
 	return (ptr);
 }
 
 /**
- * remove_comments - function replaces first instance of '%' with '\0'
+ * remove_comments - function replaces first instance of '#' with '\0'
  * @buf: address of the string to modify
  *
  * Return: Always 0;
@@ -130,8 +130,8 @@ void remove_comments(char *buf)
 {
 	int e;
 
-	for (e = 0; buf[e]; != '\0'; e++)
-		if (buf[e] == '%' && (!e || buf[e - 1] == ' '))
+	for (e = 0; buf[e] != '\0'; e++)
+		if (buf[e] == '#' && (!e || buf[e - 1] == ' '))
 		{
 			buf[e] = '\0';
 			break;

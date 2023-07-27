@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * *_memset - fills memory with a constant byte
+ **_memset - fills memory with a constant byte
  * @z: the pointer to the memory area
  * @d: the byte to fill *z with
  * @m: the amount of bytes to be filled
@@ -17,10 +17,10 @@ char *_memset(char *z, char d, unsigned int m)
 }
 
 /**
- * free - frees a string of strings
+ * ffree - frees a string of strings
  * @qq: string of strings
 */
-void free(char **qq)
+void ffree(char **qq)
 {
 	char **x = qq;
 
@@ -41,7 +41,7 @@ void free(char **qq)
 */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char q;
+	char *q;
 
 	if (!ptr)
 		return (malloc(new_size));

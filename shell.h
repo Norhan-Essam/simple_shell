@@ -113,7 +113,7 @@ typedef struct builtin
 
 /* hsh.c */
 int hsh(info_t *, char **);
-int find _builtin(info_t *);
+int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
@@ -202,7 +202,7 @@ int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
 /* env2.c module */
-char **get_environ(inifo_t *);
+char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
