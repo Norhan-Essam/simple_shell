@@ -27,8 +27,8 @@ size_t list_len(const list_t *d)
 char **list_to_strings(list_t *head)
 {
 	list_t *node = head;
-	size_t e = list_len(head), g;
-	char **str;
+	size_t e = list_len(head), k;
+	char **strs;
 	char *str;
 
 	if (!head || !e)
@@ -41,8 +41,8 @@ char **list_to_strings(list_t *head)
 		str = malloc(_strlen(node->str) + 1);
 		if (!str)
 		{
-			for (g = 0; g < e; g++)
-				free(strs[g]);
+			for (k = 0; k < e; k++)
+				free(strs[k]);
 			free(strs);
 			return (NULL);
 		}
@@ -56,22 +56,22 @@ char **list_to_strings(list_t *head)
 
 /**
  * print_list - prints all elements of a list_t linked list
- * @d: pointer to first node
+ * @w: pointer to first node
  *
  * Return: size of list
 */
-size_t print_list(const list_t *d)
+size_t print_list(const list_t *w)
 {
 	size_t e = 0;
 
-	while (d)
+	while (w)
 	{
-		_puts(convert_number(d->num, 10, 0));
+		_puts(convert_number(w->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
-		_puts(d->str ? d->str : "(nil)");
+		_puts(w->str ? w->str : "(nil)");
 		_puts("\n");
-		d = d->next;
+		w = w->next;
 		e++;
 	}
 	return (e);

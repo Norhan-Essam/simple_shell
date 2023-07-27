@@ -22,7 +22,7 @@ int hsh(info_t *info, char **av)
 		if (w != -1)
 		{
 			set_info(info, av);
-			builin_ret = find_builtin(info);
+			builtin_ret = find_builtin(info);
 			if (builtin_ret == -1)
 				find_cmd(info);
 		}
@@ -54,8 +54,8 @@ int hsh(info_t *info, char **av)
 */
 int find_builtin(info_t *info)
 {
-	int e, builtin_in_ret = -1;
-	builtin_table builinbl[] = {
+	int e, built_in_ret = -1;
+	builtin_table builtinbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
 		{"help", _myhelp},
@@ -66,14 +66,14 @@ int find_builtin(info_t *info)
 		{NULL, NULL}
 	};
 
-	for (e = 0; builinbl[e].type; e++)
+	for (e = 0; builtinbl[e].type; e++)
 		if (_strcmp(info->argv[0], builtinbl[e].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtin[e].func(info);
+			built_in_ret = builtinbl[e].func(info);
 			break;
 		}
-	return (builtin_in_ret);
+	return (built_in_ret);
 }
 
 /**
@@ -109,7 +109,7 @@ void find_cmd(info_t *info)
 	{
 		if ((interactive(info) || _getenv(info, "PATH=")
 					|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
-			fork_cnd(info);
+			fork_cmd(info);
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
@@ -139,7 +139,7 @@ void fork_cmd(info_t *info)
 	{
 		if (execve(info->path, info->argv, get_environ(info)) == -1)
 		{
-			free_info(info, 1)
+			free_info(info, 1);
 				if (errno == EACCES)
 					exit(126);
 			exit(1);

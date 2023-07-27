@@ -77,7 +77,7 @@ ssize_t get_input(info_t *info)
 		if (e >= len) /* reached end of buffer? */
 		{
 			e = len = 0; /* reset position and length */
-			info->cmd_buf__type = CMD_NORM;
+			info->cmd_buf_type = CMD_NORM;
 		}
 
 		*buf_p = q; /* pass back pointer to current command position */
@@ -94,18 +94,18 @@ ssize_t get_input(info_t *info)
  * @buf: buffer
  * @e: size
  *
- * Return: w
+ * Return: n
 */
 ssize_t read_buf(info_t *info, char *buf, size_t *e)
 {
-	ssize_t w = 0;
+	ssize_t n = 0;
 
 	if (*e)
 		return (0);
-	w =  read(info->readfd, buf, READ_BUF_SIZE);
-	if (e >= 0)
-		*e = w;
-	return (w);
+	n =  read(info->readfd, buf, READ_BUF_SIZE);
+	if (n >= 0)
+		*e = n;
+	return (n);
 }
 
 /**
@@ -135,7 +135,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 
 	u = _strchr(buf + e, '\n');
 	t = u ? 1 + (unsigned int)(u - buf) : len;
-	new_p = _realloc(q, z, z, ? z + t : t + 1);
+	new_p = _realloc(q, z, z ? z + t : t + 1);
 	if (!new_p) /* MALLOC FAILURE! */
 		return (q ? free(q), -1 : 1);
 

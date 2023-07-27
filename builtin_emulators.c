@@ -52,7 +52,7 @@ int _mycd(info_t *info)
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)
 	{
-		if (!_getenv(info, "OLDPED="))
+		if (!_getenv(info, "OLDPWD="))
 		{
 			_puts(z);
 			_putchar('\n');
@@ -70,8 +70,8 @@ int _mycd(info_t *info)
 	}
 	else
 	{
-		_sentenv(info, "OLDPWD", _getenv(info, "PED="));
-		_setenv(omfo, "PWD", getcwd(buffer, 1024));
+		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
+		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }
